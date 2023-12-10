@@ -1,0 +1,22 @@
+<%= semantic_form_for :settings, method: :post, url: { action: :update  } do |f| %>
+  <% all_settings_by_scope.each_pair do |scope, settings| %>
+    <fieldset class="inputs">
+      <legend><span><%= scope.to_s.capitalize %></span></legend>
+      <ol>
+        <% settings.each do |setting| %>
+          <li class="string input stringish" id="settings_<%= setting.key %>_input">
+            <%= f.label setting.key %>
+            <%= field_for_setting(f, setting) %>
+          </li>
+        <% end %>
+      </ol>
+    </fieldset>
+  <% end %>
+  <fieldset class="actions">
+    <ol>
+      <li class="action input_action " id="settings_submit_action">
+        <%= f.submit %>
+      </li>
+    </ol>
+  </fieldset>
+<% end %>
