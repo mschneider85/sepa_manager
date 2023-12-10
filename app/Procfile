@@ -1,0 +1,1 @@
+web: env RAILS_GROUPS=web bundle exec puma -C config/puma.rb
