@@ -4,6 +4,10 @@
 ARG RUBY_VERSION=3.2.2
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
+# Apply DATABASE_URL build-arg to the environment
+ARG DATABASE_URL=database_url
+ENV DATABASE_URL ${DATABASE_URL}
+
 # Rails app lives here
 WORKDIR /rails
 
