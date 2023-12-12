@@ -10,8 +10,8 @@ module SettingsHelper
     when :integer
       form.number_field setting.key, label: false, value: Setting.send(setting.key.to_s), placeholder: setting.default
     when :hash
-      value = YAML.dump(Setting.send(setting.key.to_s)).gsub(/^---.*\n*/,'')
-      form.text_area setting.key, value: value, label: false, placeholder: YAML.dump(setting.default).gsub(/^---.*\n*/,'')
+      value = YAML.dump(Setting.send(setting.key.to_s)).gsub(/^---.*\n*/, "")
+      form.text_area setting.key, value: value, label: false, placeholder: YAML.dump(setting.default).gsub(/^---.*\n*/, "")
     else
       if setting[:options].key?(:option_values)
         form.select setting.key, setting[:options][:option_values], label: false, selected: Setting.send(setting.key.to_s)
