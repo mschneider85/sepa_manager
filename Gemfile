@@ -56,9 +56,13 @@ gem "sepa_king"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'dotenv-rails'
 end
 
 group :development do
+  # Gives letter_opener an interface for browsing sent emails.
+  gem 'letter_opener_web'
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 

@@ -21,6 +21,26 @@ SEPA Manager is a Ruby on Rails application tailored for managing SEPA (Single E
 :outbox_tray: ***SEPA XML Export***
   - Generate SEPA XML files adhering to the required standards for direct debit transactions. The exported files can seamlessly integrate with banking systems and financial tools.
 
+## Configuration
+
+- `RAILS_HOST`: The host name that the application uses. This is typically the domain name of your application when deployed.
+
+The application uses SMTP for sending emails. The SMTP settings are configured via environment variables. Here are the environment variables used:
+
+- `SMTP_ADDRESS`: The address of the SMTP server.
+- `SMTP_PORT`: The port to use for the SMTP server. Default is `587`.
+- `SMTP_DOMAIN`: The HELO domain provided by the client to the server.
+- `SMTP_USER_NAME`: The username to use for SMTP authentication.
+- `SMTP_PASSWORD`: The password to use for SMTP authentication.
+- `SMTP_AUTHENTICATION`: The authentication type to use. Default is `plain`.
+- `SMTP_ENABLE_STARTTLS_AUTO`: Whether to use STARTTLS. Default is `true`.
+
+In addition, the sender email address for Devise emails is configured via the `DEVISE_MAILER_SENDER` environment variable:
+
+- `DEVISE_MAILER_SENDER`: The sender email address for Devise emails.
+
+You can set these environment variables in your `.env` file.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE.md).
