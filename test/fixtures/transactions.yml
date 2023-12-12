@@ -1,27 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  iban: MyString
-  amount_cents: 1
-  instruction: MyString
-  reference: MyString
-  remittance_information: MyString
-  mandate_id: MyString
+transaction_one:
+  name: John Doe
+  iban: DE02120300000000202051
+  amount_cents: 1500
+  remittance_information: Thanks
+  mandate_id: 2023-11-01-JO-DO-FR
   mandate_date_of_signature: 2023-11-29
-  local_instrument: 1
-  sequence_type: 1
-  requested_date: 2023-11-29
+  local_instrument: CORE
+  sequence_type: FRST
 
-two:
-  name: MyString
-  iban: MyString
-  amount_cents: 1
-  instruction: MyString
-  reference: MyString
-  remittance_information: MyString
-  mandate_id: MyString
+transaction_one:
+  name: Jane Doe
+  iban: DE02500105170137075030
+  amount_cents: 1500
+  remittance_information: Thanks
+  mandate_id: 2023-11-01-JA-DO-FR
   mandate_date_of_signature: 2023-11-29
-  local_instrument: 1
-  sequence_type: 1
-  requested_date: 2023-11-29
+  local_instrument: CORE
+  sequence_type: FRST
