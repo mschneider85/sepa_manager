@@ -10,6 +10,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/*'
+    - 'vendor/bundle/**/*'
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented_relative_to_receiver
@@ -67,4 +68,4 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Layout/HashAlignment:
-  EnforcedColonStyle: table
+  Enabled: false
