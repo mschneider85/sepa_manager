@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 
 gem "activeadmin"
 gem "devise"
+gem "paper_trail"
 gem "rails-settings-cached"
 gem "sass-rails"
 

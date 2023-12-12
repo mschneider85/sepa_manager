@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  has_paper_trail
+
   enum local_instrument: { CORE: 0, COR1: 1, B2B: 2 }
   enum sequence_type: { FRST: 0, RCUR: 1, OOFF: 2, FNAL: 3 }
 

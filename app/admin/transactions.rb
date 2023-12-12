@@ -53,4 +53,29 @@ ActiveAdmin.register Transaction do
     column :amount
     actions
   end
+
+  sidebar :versionate, partial: "layouts/version", only: :show
+
+  controller do
+    def show
+      @transaction = Transaction.includes(versions: :item).find(params[:id])
+      @versions = @transaction.versions
+      @transaction = @transaction.versions[params[:version].to_i].reify if params[:version]
+      show!
+    end
+  end
+
+  member_action :history do
+    @transaction = Transaction.find(params[:id])
+    @versions = PaperTrail::Version.where(item_type: "Transaction", item_id: @transaction.id)
+    render "layouts/history"
+  end
+
+  action_item :history, only: :show do
+    link_to "Version history", history_admin_transaction_path(transaction)
+  end
+
+  action_item :view, only: :history do
+    link_to "View Transaction", admin_transaction_path(transaction)
+  end
 end

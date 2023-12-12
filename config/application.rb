@@ -23,5 +23,8 @@ module SepaManager
     #
     config.time_zone = "Berlin"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Make paper_trail work by allowing YAML unsafe load
+    config.active_record.use_yaml_unsafe_load = true
   end
 end

@@ -43,4 +43,28 @@ class TransactionTest < ActiveSupport::TestCase
     transaction = new_valid_transaction
     assert transaction.save, "Did not save the transaction with valid attributes"
   end
+
+  test "versioning on create" do
+    transaction = new_valid_transaction
+    transaction.save
+    assert_equal 1, transaction.versions.size
+    assert_equal "create", transaction.versions.last.event
+  end
+
+  test "versioning on update" do
+    transaction = new_valid_transaction
+    transaction.save
+    transaction.update(name: "New Name")
+    assert_equal 2, transaction.versions.size
+    assert_equal "update", transaction.versions.last.event
+    assert_not_equal "New Name", transaction.versions.last.reify.name
+  end
+
+  test "versioning on destroy" do
+    transaction = new_valid_transaction
+    transaction.save
+    transaction.destroy
+    assert_equal 2, transaction.versions.size
+    assert_equal "destroy", transaction.versions.last.event
+  end
 end
