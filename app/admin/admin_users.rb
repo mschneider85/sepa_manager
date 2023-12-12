@@ -25,4 +25,12 @@ ActiveAdmin.register AdminUser do
     f.actions
   end
 
+  member_action :reset_password, method: :put do
+    resource.send_reset_password_instructions
+    redirect_to resource_path, notice: "Password reset email sent"
+  end
+
+  action_item :reset_password, only: :show do
+    link_to "Send Reset Password Instruction", reset_password_admin_admin_user_path(resource), method: :put
+  end
 end
