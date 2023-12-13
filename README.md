@@ -14,6 +14,12 @@ SEPA Manager is a Ruby on Rails application tailored for managing SEPA (Single E
 :wrench: ***Creditor Settings***
   - Set and manage global creditor information that are applied uniformly to all transactions.
 
+:family: ***Members***
+  - Manage member information including name, address, and banking details. Members can be associated with transactions for efficient data entry and management.
+
+:money_with_wings: ***Transaction Creation from Member Data***
+  - Create transactions directly from member data, reducing the need for manual data entry and minimizing errors. This service allows for efficient creation of multiple transactions.
+
 :page_facing_up: ***Transaction Input***
   - Easily input SEPA direct debit transactions with detailed information, including debtor details, transaction amounts, due dates, and more.
 
