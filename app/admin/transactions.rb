@@ -23,7 +23,7 @@ ActiveAdmin.register Transaction do
       f.input :amount, required: true
       f.input :instruction, label: "Instruction  Identification", input_html: { maxlength: 35 }, hint: "max 35 characters, A-Za-z0-9+|?/-:(),.' and space"
       f.input :reference, input_html: { maxlength: 35 }, hint: "max 35 characters"
-      f.input :remittance_information, input_html: { value: f.object.remittance_information || Transaction.last&.remittance_information }, hint: "max 140 characters"
+      f.input :remittance_information, input_html: { value: f.object.remittance_information || Setting.default_transaction_text }, hint: "max 140 characters"
     end
 
     inputs "Mandate" do
@@ -47,7 +47,6 @@ ActiveAdmin.register Transaction do
 
   index do
     selectable_column
-    id_column
     column :name
     column :iban
     column :amount

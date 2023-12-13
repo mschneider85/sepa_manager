@@ -7,6 +7,7 @@ class Setting < RailsSettings::Base
     field :bic, type: :string
     field :iban, type: :string
     field :creditor_identifier, type: :string
+    field :default_transaction_text, type: :string
   end
 
   # Define your fields
