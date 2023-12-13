@@ -5,17 +5,17 @@ transaction_one:
   iban: DE02120300000000202051
   amount_cents: 1500
   remittance_information: Thanks
-  mandate_id: 2023-11-01-JO-DO-FR
+  mandate_id: 2023-11-29-JO-DO-HA
   mandate_date_of_signature: 2023-11-29
   local_instrument: CORE
   sequence_type: FRST
 
-transaction_one:
+transaction_two:
   name: Jane Doe
   iban: DE02500105170137075030
   amount_cents: 1500
   remittance_information: Thanks
-  mandate_id: 2023-11-01-JA-DO-FR
+  mandate_id: 2023-11-29-JA-DO-HA
   mandate_date_of_signature: 2023-11-29
   local_instrument: CORE
   sequence_type: FRST

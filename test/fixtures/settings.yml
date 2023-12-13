@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+creditor_name:
+  var: creditor_name
+  value: "--- Dead Poets Society\n"
+
+iban:
+  var: iban
+  value: "--- DE02100100100006820101\n"
+
+creditor_identifier:
+  var: creditor_identifier
+  value: "--- DE98ZZZ09999999999\n"

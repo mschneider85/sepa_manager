@@ -12,3 +12,15 @@ one:
   iban: DE02120300000000202051
   account_holder: John Doe
   entry_date: 2023-11-29
+two:
+  firstname: Jane
+  lastname: Doe
+  address: Hauptstrasse 2
+  zip: '12345'
+  city: Dresden
+  email: janedoe@example.com
+  annual_fee_cents: 1500
+  annual_fee_currency: EUR
+  iban: DE02500105170137075030
+  account_holder: Jane Doe
+  entry_date: 2023-11-29
