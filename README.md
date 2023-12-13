@@ -1,5 +1,7 @@
 # SEPA Manager
 
+![Build passing](https://github.com/mschneider85/sepa_manager/actions/workflows/rubyonrails.yml/badge.svg)
+
 ## Overview
 
 SEPA Manager is a Ruby on Rails application tailored for managing SEPA (Single Euro Payments Area) direct debit transactions. This comprehensive tool not only enables users to input and manage transactions efficiently but also provides a seamless export functionality for generating SEPA direct debit XML files. Additionally, the application comes equipped with a robust authentication system and global settings for creditor information.
