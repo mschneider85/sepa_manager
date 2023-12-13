@@ -30,7 +30,7 @@ ActiveAdmin.register Member do
       f.input :annual_fee
       f.input :iban
       f.input :account_holder
-      f.input :entry_date, input_html: { value: f.object.entry_date || Daten.current }
+      f.input :entry_date, input_html: { value: f.object.entry_date || Date.current }
     end
 
     f.actions
