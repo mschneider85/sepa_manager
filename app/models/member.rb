@@ -23,6 +23,6 @@ class Member < ApplicationRecord
   private
 
   def uid_part_from(string)
-    string.slice(0, 2).upcase
+    string.gsub(/[^0-9A-Za-z]/, "").slice(0, 2).upcase
   end
 end
