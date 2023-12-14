@@ -24,16 +24,34 @@ ActiveAdmin.register Member do
       f.input :firstname
       f.input :lastname
       f.input :address
-      f.input :zip
-      f.input :city
+      f.input :zip, input_html: { value: f.object.zip || Setting.default_zip }
+      f.input :city, input_html: { value: f.object.city || Setting.default_city }
       f.input :email
       f.input :annual_fee
       f.input :iban
       f.input :account_holder
-      f.input :entry_date, input_html: { value: f.object.entry_date || Date.current }
+      f.input :entry_date, as: :date_select, selected: f.object.entry_date || Date.current, start_year: 2023
     end
 
     f.actions
+
+    script type: "text/javascript" do
+      raw("
+        document.addEventListener('DOMContentLoaded', function() {
+          var copyButton = document.createElement('button');
+          copyButton.textContent = 'Autofill';
+          copyButton.type = 'button';
+          copyButton.addEventListener('click', function() {
+            var firstname = document.getElementById('member_firstname').value;
+            var lastname = document.getElementById('member_lastname').value;
+            var memberName = firstname + ' ' + lastname;
+            var accountHolder = document.getElementById('member_account_holder');
+            accountHolder.value = memberName;
+          });
+          document.querySelector('#member_account_holder_input').append(copyButton);
+        });
+      ")
+    end
   end
 
   index do
@@ -41,6 +59,7 @@ ActiveAdmin.register Member do
     column :uid
     column :name
     column :address
+    column "IBAN", :formatted_iban
     actions
   end
 

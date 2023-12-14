@@ -10,6 +10,11 @@ class Setting < RailsSettings::Base
     field :default_transaction_text, type: :string
   end
 
+  scope :default_values do
+    field :default_zip, type: :string
+    field :default_city, type: :string
+  end
+
   # Define your fields
   # field :host, type: :string, default: "http://localhost:3000"
   # field :default_locale, default: "en", type: :string

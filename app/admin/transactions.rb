@@ -48,7 +48,7 @@ ActiveAdmin.register Transaction do
   index do
     selectable_column
     column :name
-    column :iban
+    column "IBAN", :formatted_iban
     column :amount
     actions
   end

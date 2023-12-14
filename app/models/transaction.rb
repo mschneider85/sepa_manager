@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  include IbanFormatting
+
   has_paper_trail
 
   enum local_instrument: { CORE: 0, COR1: 1, B2B: 2 }

@@ -1,4 +1,6 @@
 class Member < ApplicationRecord
+  include IbanFormatting
+
   has_paper_trail
 
   monetize :annual_fee_cents, numericality: { greater_than: 0 }
