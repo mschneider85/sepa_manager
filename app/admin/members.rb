@@ -35,8 +35,8 @@ ActiveAdmin.register Member do
     end
 
     f.actions
-
     script type: "text/javascript" do
+      # rubocop:disable Rails/OutputSafety
       raw("
         document.addEventListener('DOMContentLoaded', function() {
           var copyButton = document.createElement('button');
@@ -52,6 +52,7 @@ ActiveAdmin.register Member do
           document.querySelector('#member_account_holder_input').append(copyButton);
         });
       ")
+      # rubocop:enable Rails/OutputSafety
     end
   end
 
