@@ -4,7 +4,7 @@ ActiveAdmin.register Member do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :firstname, :lastname, :address, :zip, :city, :email, :annual_fee, :iban, :account_holder, :entry_date
+  permit_params :firstname, :lastname, :address, :zip, :city, :email, :annual_fee, :iban, :account_holder, :entry_date, :accept_emails
   #
   # or
   #
@@ -31,6 +31,7 @@ ActiveAdmin.register Member do
       f.input :iban
       f.input :account_holder
       f.input :entry_date, as: :date_select, selected: f.object.entry_date || Date.current, start_year: 2023
+      f.input :accept_emails, as: :select, include_blank: false
     end
 
     f.actions
