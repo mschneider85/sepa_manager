@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class AdminTest < ApplicationSystemTestCase
+class LoginTest < ApplicationSystemTestCase
   test "admin logs in" do
     admin_user = admin_users(:admin_one)
 
