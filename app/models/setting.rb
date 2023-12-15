@@ -7,10 +7,10 @@ class Setting < RailsSettings::Base
     field :bic, type: :string
     field :iban, type: :string
     field :creditor_identifier, type: :string
-    field :default_transaction_text, type: :string
   end
 
   scope :default_values do
+    field :default_transaction_text, type: :string
     field :default_zip, type: :string
     field :default_city, type: :string
   end
