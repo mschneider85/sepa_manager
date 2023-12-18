@@ -10,6 +10,7 @@ class CreateTransactions
   def call
     Member.where(id: member_ids).find_each do |member|
       Transaction.create!(
+        member: member,
         name: member.account_holder,
         iban: member.iban,
         amount_cents: member.annual_fee_cents,

@@ -58,4 +58,10 @@ class MemberTest < ActiveSupport::TestCase
     @member.valid?
     assert_not_empty @member.errors[:entry_date], "No validation error for entry_date present"
   end
+
+  test "should not be valid with duplicate uid" do
+    duplicate_member = @member.dup
+    duplicate_member.save
+    assert_not_empty duplicate_member.errors[:uid], "No validation error for duplicate uid"
+  end
 end

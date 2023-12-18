@@ -2,7 +2,7 @@ require "test_helper"
 
 class TransactionTest < ActiveSupport::TestCase
   def new_valid_transaction
-    Transaction.new(name: "Jane Roe", iban: "DE02300209000106531065", amount_cents: 1500, remittance_information: "Thanks", mandate_id: "2023-11-01-JA-RO-FR", mandate_date_of_signature: "2023-11-29", local_instrument: "CORE", sequence_type: "FRST")
+    Transaction.new(member: members(:two), name: "Jane Roe", iban: "DE02300209000106531065", amount_cents: 1500, remittance_information: "Thanks", mandate_id: "2023-11-01-JA-RO-FR", mandate_date_of_signature: "2023-11-29", local_instrument: "CORE", sequence_type: "FRST")
   end
 
   test "should not be valid without name" do
@@ -18,13 +18,6 @@ class TransactionTest < ActiveSupport::TestCase
 
     transaction.valid?
     assert_not_empty transaction.errors[:iban], "No validation error for iban present"
-  end
-
-  test "should not be valid with duplicate mandate_id" do
-    transaction = new_valid_transaction
-    transaction.mandate_id = transactions(:transaction_one).mandate_id
-    transaction.valid?
-    assert_not_empty transaction.errors[:mandate_id], "No validation error for mandate_id present"
   end
 
   test "should not be valid with non-numeric amount_cents" do

@@ -101,6 +101,7 @@ ActiveAdmin.register Member do
     def scoped_collection
       super.includes :transactions
     end
+
     def show
       @member = Member.includes(versions: :item).find(params[:id])
       @versions = @member.versions
