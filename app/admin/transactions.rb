@@ -48,8 +48,12 @@ ActiveAdmin.register Transaction do
   index do
     selectable_column
     column :name
-    column "IBAN", :formatted_iban
-    column :amount
+    column "IBAN", :formatted_iban, sortable: :iban
+    column :sequence_type
+    column :created_at
+    column :amount, sortable: :amount_cents do |transaction|
+      transaction.amount.format
+    end
     actions
   end
 

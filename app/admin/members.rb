@@ -21,6 +21,7 @@ ActiveAdmin.register Member do
 
   form do |f|
     inputs do
+      f.input :uid, input_html: { readonly: true, disabled: true }
       f.input :firstname
       f.input :lastname
       f.input :address
@@ -59,15 +60,47 @@ ActiveAdmin.register Member do
   index do
     selectable_column
     column :uid
-    column :name
+    column :name, sortable: :firstname
     column :address
-    column "IBAN", :formatted_iban
+    column "IBAN", :formatted_iban, sortable: :iban
+    column "Existing transactions" do |member|
+      member.transactions.exists?
+    end
     actions
+  end
+
+  show do
+    attributes_table do
+      row :uid
+      row :firstname
+      row :lastname
+      row :address
+      row :zip
+      row :city
+      row :email
+      row :annual_fee
+      row :iban
+      row :account_holder
+      row :entry_date
+      row :accept_emails
+    end
+
+    panel "Transactions" do
+      table_for member.transactions do
+        column :sequence_type do |transaction|
+          link_to(transaction.sequence_type, admin_transaction_path(transaction))
+        end
+        column :created_at
+      end
+    end
   end
 
   sidebar :versionate, partial: "layouts/version", only: :show
 
   controller do
+    def scoped_collection
+      super.includes :transactions
+    end
     def show
       @member = Member.includes(versions: :item).find(params[:id])
       @versions = @member.versions
