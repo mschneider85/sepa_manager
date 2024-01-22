@@ -75,10 +75,12 @@ group :development do
 
   gem "brakeman"
   gem "bundler-audit"
+  gem "dotenv"
   gem "erb_lint"
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails"
+  gem "tty-prompt"
 end
 
 group :test do
