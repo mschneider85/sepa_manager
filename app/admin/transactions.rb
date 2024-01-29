@@ -57,6 +57,13 @@ ActiveAdmin.register Transaction do
     actions
   end
 
+  filter :member
+  filter :bic
+  filter :iban
+  filter :amount_cents
+  filter :sequence_type, as: :select, collection: proc { Transaction.sequence_types }
+  filter :created_at
+
   sidebar :versionate, partial: "layouts/version", only: :show
 
   controller do

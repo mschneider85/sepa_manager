@@ -26,5 +26,7 @@ module SepaManager
 
     # Make paper_trail work by allowing YAML unsafe load
     config.active_record.use_yaml_unsafe_load = true
+
+    config.cache_store = :memory_store
   end
 end

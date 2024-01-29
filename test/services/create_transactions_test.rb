@@ -40,4 +40,21 @@ class CreateTransactionsTest < ActiveSupport::TestCase
       @service.call
     end
   end
+
+  test "determine_sequence_type returns 'FRST' when member has no transactions" do
+    member = Member.new
+    assert_equal "FRST", @service.determine_sequence_type(member)
+  end
+
+  test "determine_sequence_type returns 'RCUR' when member has transactions" do
+    member = Member.new
+    member.transactions.build
+    assert_equal "RCUR", @service.determine_sequence_type(member)
+  end
+
+  test "call creates transactions with RCUR when member has transactions" do
+    2.times { @service.call }
+
+    assert_equal 2, Transaction.where(sequence_type: "RCUR").length
+  end
 end

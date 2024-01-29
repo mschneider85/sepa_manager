@@ -69,6 +69,10 @@ ActiveAdmin.register Member do
     actions
   end
 
+  preserve_default_filters!
+  remove_filter :versions
+  remove_filter :transactions
+
   show do
     attributes_table do
       row :uid
