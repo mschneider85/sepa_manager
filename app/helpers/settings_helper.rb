@@ -2,7 +2,7 @@ module SettingsHelper
   def field_for_setting(form, setting)
     case setting.type
     when :boolean
-      value = Setting.send("#{setting.key}?")
+      value = Setting.send(:"#{setting.key}?")
       form.check_box setting.key, checked: value, label: false
     when :array
       value = Setting.send(setting.key.to_s).join("\n")
