@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
+  match "/404", to: "errors#not_found", via: :all
+  match "/404", to: "errors#unprocessable_entity", via: :all
+  match "/404", to: "errors#internal_server_error", via: :all
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
