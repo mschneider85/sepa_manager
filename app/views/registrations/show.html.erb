@@ -1,6 +1,8 @@
-<h1>MITGLIEDSANTRAG</h1>
-
 <%= bootstrap_form_with model: @registration_form, url: registration_path do |f| %>
+  <%= render 'notification', registration_form: @registration_form %>
+
+  <h1>MITGLIEDSANTRAG</h1>
+
   <%= f.invisible_captcha :subtitle %>
   <p>
     Hiermit erkläre ich den Beitritt zum Förderverein Güntherscher Kindergarten e.V.

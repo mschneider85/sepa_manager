@@ -1,0 +1,9 @@
+<% if flash[:error] || registration_form.errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show mb-5" role="alert">
+    <%= flash[:error].presence || "Bitte vervollständige das Formular." %>
+    <button type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"></button>
+  </div>
+<% end %>

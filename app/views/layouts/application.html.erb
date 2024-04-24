@@ -15,11 +15,6 @@
     <div class="container d-flex flex-column justify-content-start min-vh-100 shadow bg-white">
       <main class="p-sm-5 mb-sm-5 p-3 mb-3 mx-lg-5">
         <%= image_tag 'logo.jpg', loading: 'lazy', class: 'img-fluid mx-auto d-block mb-5' %>
-        <% if flash[:error] %>
-          <div class="alert alert-primary" role="alert">
-            <%= flash[:error] %>
-          </div>
-        <% end %>
         <%= yield %>
       </main>
       <footer class="p-sm-5 mb-sm-5 p-3 mb-3 mx-lg-5 mt-auto border-top">
