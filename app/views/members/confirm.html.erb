@@ -1,4 +1,11 @@
-<h1 class="mb-5">DANKE 🚀🎉🙌</h1>
-<p>
-  Deine Anmeldung wurde erfolgreich bestätigt.
-</p>
+<% if @invalid %>
+  <h1 class="mb-5">LINK NICHT MEHR GÜLTIG 👾</h1>
+  <p>
+    Deine Anmeldung wurde bereits bestätigt.
+  </p>
+<% else %>
+  <h1 class="mb-5">DANKE 🚀🎉🙌</h1>
+  <p>
+    Deine Anmeldung wurde erfolgreich bestätigt.
+  </p>
+<% end %>
