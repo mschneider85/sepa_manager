@@ -105,7 +105,7 @@ ActiveAdmin.register Member do
 
   controller do
     before_action only: :index do
-      params[:q] = { confirmed_eq: "true"} if params[:commit].blank? && params[:q].blank? && params[:scope].blank?
+      params[:q] = { confirmed_eq: "true" } if params[:commit].blank? && params[:q].blank? && params[:scope].blank?
     end
 
     def scoped_collection
