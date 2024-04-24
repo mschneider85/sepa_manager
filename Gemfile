@@ -61,7 +61,6 @@ gem "bootstrap_form", "~> 5.4"
 gem "invisible_captcha"
 
 gem "mjml-rails"
-gem "mrml"
 
 gem "premailer-rails"
 
