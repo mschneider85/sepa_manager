@@ -47,7 +47,14 @@ ActiveAdmin.register_page "Dashboard" do
         column("Type") { |v| v.item_type.underscore.humanize }
         column("Event") { |v| status_tag(v.event) }
         column("Modified at") { |v| v.created_at.to_fs :long }
-        column("Modified by") { |v| link_to AdminUser.find(v.whodunnit).email, [:admin, AdminUser.find(v.whodunnit)] }
+        column("Modified by") do |v|
+          admin_user = AdminUser.find_by(id: v.whodunnit)
+          if admin_user.present?
+            link_to admin_user.email, [:admin, admin_user]
+          else
+            "Registration form"
+          end
+        end
       end
     end
   end

@@ -5,6 +5,13 @@ panel "History" do
     end
     column("Type") { |v| v.item_type.underscore.humanize }
     column("Modified at") { |v| v.created_at.to_fs :long }
-    column("Admin") { |v| link_to AdminUser.find(v.whodunnit).email, [:admin, AdminUser.find(v.whodunnit)] }
+    column("Admin") do |v|
+      admin_user = AdminUser.find_by(id: v.whodunnit)
+      if admin_user.present?
+        link_to admin_user.email, [:admin, admin_user]
+      else
+        "Registration form"
+      end
+    end
   end
 end

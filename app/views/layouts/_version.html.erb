@@ -3,9 +3,12 @@
 
   <b>Created At:</b>
   <%= @versions.last.created_at %>
-  <br>
-  <b>Admin</b>: <%= AdminUser.find(@versions.last.whodunnit).email %>
-  <br>
+  <% admin_user = AdminUser.find_by(id: @versions.last.whodunnit) %>
+  <% if admin_user.present? %>
+    <br>
+    <b>Admin</b>: <%= admin_user.email %>
+    <br>
+  <% end %>
   <% if @versions.length.to_i > 1 %>
     <% if params[:version].to_i > 1 || !params[:version] %>
       <%= link_to "Previous version", {:version => (params[:version] || @versions.length).to_i - 1} %>
@@ -16,10 +19,13 @@
 
       <b>Modify at:</b>
       <%= @versions[(params[:version].to_i - 1)].created_at %>
-      <br>
-      <b>Admin</b>:
-      <%= AdminUser.find(@versions[(params[:version].to_i - 1)].whodunnit).email %>
-      <br>
+      <% admin_user = AdminUser.find_by(id: @versions.last.whodunnit) %>
+      <% if admin_user.present? %>
+        <br>
+        <b>Admin</b>:
+        <%= admin_user.email %>
+        <br>
+      <% end %>
 
       <%= link_to "Go to current version" %>
     <% end %>
