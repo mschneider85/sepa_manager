@@ -1,4 +1,4 @@
-<mjml version="3.3.3">
+<mjml>
   <mj-head>
     <mj-preview>Wilkommen im Förderverein Güntherscher Kindergarten e.V.</mj-preview>
     <mj-attributes>
@@ -14,15 +14,6 @@
       <mj-table color="#222" />
       <mj-all font-family="Helvetica, Arial, sans-serif" />
     </mj-attributes>
-    <mj-style inline="inline">
-      a {
-        color: inherit
-      }
-
-      th {
-        text-align: left
-      }
-    </mj-style>
   </mj-head>
   <mj-body background-color="#F2F2F2">
     <mj-section mj-class="bg-light" padding="20px 0">
@@ -70,7 +61,7 @@
     </mj-section>
     <mj-section padding="20px 0px 20px 0px">
       <mj-column>
-        <mj-text font-size="11px" padding="0px 20px"><a href="https://guentherscher-foerderverein.de/impressum">IMPRESSUM</a></mj-text>
+        <mj-text font-size="11px" padding="0px 20px"><a href="https://guentherscher-foerderverein.de/impressum" style="color: #222;">IMPRESSUM</a></mj-text>
       </mj-column>
     </mj-section>
   </mj-body>

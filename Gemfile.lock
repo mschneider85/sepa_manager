@@ -234,6 +234,7 @@ GEM
       monetize (~> 1.9)
       money (~> 6.13)
       railties (>= 3.0)
+    mrml (1.5.0-x86_64-linux)
     msgpack (1.7.2)
     mutex_m (0.2.0)
     net-imap (0.4.10)
@@ -454,6 +455,7 @@ DEPENDENCIES
   letter_opener_web
   mjml-rails
   money-rails
+  mrml
   paper_trail
   pg (~> 1.1)
   premailer-rails
