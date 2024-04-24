@@ -22,6 +22,8 @@ module SepaManager
     # in config/environments, which are processed later.
     #
     config.time_zone = "Berlin"
+    config.i18n.available_locales = %i[de en]
+    config.i18n.default_locale = :de
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Make paper_trail work by allowing YAML unsafe load

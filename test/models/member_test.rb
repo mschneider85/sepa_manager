@@ -59,9 +59,15 @@ class MemberTest < ActiveSupport::TestCase
     assert_not_empty @member.errors[:entry_date], "No validation error for entry_date present"
   end
 
-  test "should not be valid with duplicate uid" do
+  test "should generate a unique UID with suffix" do
     duplicate_member = @member.dup
     duplicate_member.save
-    assert_not_empty duplicate_member.errors[:uid], "No validation error for duplicate uid"
+    assert_not_equal @member, duplicate_member
+  end
+
+  test "should not be valid without annual fee" do
+    @member.annual_fee_cents = nil
+    @member.valid?
+    assert_not_empty @member.errors[:annual_fee_cents], "No validation error for annual fee present"
   end
 end

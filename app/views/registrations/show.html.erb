@@ -1,0 +1,71 @@
+<h1>MITGLIEDSANTRAG</h1>
+
+<%= bootstrap_form_with model: @registration_form, url: registration_path do |f| %>
+  <%= f.invisible_captcha :subtitle %>
+  <p>
+    Hiermit erkläre ich den Beitritt zum Förderverein Güntherscher Kindergarten e.V.
+  </p>
+
+  <h2 class="mt-5 mb-3">Kontaktdaten</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.text_field :firstname, label: 'Vorname' %>
+    </div>
+    <div class="col-md-6">
+      <%= f.text_field :lastname, label: 'Nachname' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.text_field :address, label: 'Straße, Hausnummer' %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :zip, label: 'PLZ' %>
+    </div>
+    <div class="col-md-4">
+      <%= f.text_field :city, label: 'Ort' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.email_field :email, label: 'E-Mail' %>
+    </div>
+  </div>
+
+  <h2 class="mt-5 mb-3">Mitgliedsbeitrag</h2>
+  <p>
+    <i class="bi bi-info-circle-fill"></i>
+    Der Mitgliedsbeitrag wird jeweils am 1. Januar eines Jahres fällig, für neue Mitglieder mit dem Tag ihrer Aufnahme. Du bestimmst selbst, wie viel du beitragen möchtest. Der Mindestbeitrag beträgt 15 € pro Jahr.
+  </p>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.number_field :annual_fee, min: 15, step: 0.01, append: "€", label: 'Jahresbeitrag' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.text_field :iban, label: 'IBAN' %>
+    </div>
+    <div class="col-md-6">
+      <%= f.text_field :account_holder, label: 'Kontoinhaber' %>
+    </div>
+  </div>
+  <%= f.form_group :sepa_mandate do %>
+    <%= f.check_box :sepa_mandate, label: "Ich ermächtige den Förderverein Güntherscher Kindergarten e.V., Zahlungen von meinem Konto mittels Lastschrift einzuziehen. Zugleich weise ich mein Kreditinstitut an, die vom Förderverein Güntherscher Kindergarten e.V. auf mein Konto gezogenen Lastschriften einzulösen." %>
+  <% end %>
+
+  <h2 class="mt-5 mb-3">Datenschutz</h2>
+  <%= f.form_group :terms do %>
+    <%= f.check_box :terms, label: raw("Ich habe die #{link_to 'Datenschutzerklärung', datenschutz_path, target: '_blank'} gelesen und stimme ihr zu. Mit der Verwendung der oben genannten Daten durch den Förderverein zum Zwecke der Mitgliederverwaltung und -information sowie der Beitragserhebung erkläre ich mich hiermit einverstanden.") %>
+  <% end %>
+
+  <p class="mt-2">
+    Du hast das Recht, binnen vierzehn Tagen ohne Angabe von Gründen deine Mitgliedschaft zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag der Begründung deiner Mitgliedschaft.
+    <br>
+    Zur Wahrung der Widerrufsfrist reicht es aus, dass die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist abgesendet wird.
+    <br>
+    Das Widerrufsrecht ist auszuüben, indem unser Verein mittels einer eindeutigen Erklärung (z.B. per E-Mail) über deinen Entschluss, die Mitgliedschaft zu widerrufen, informiert wird.
+  </p>
+
+  <%= f.submit 'SENDEN', class: 'btn btn-lg btn-primary mx-auto d-block mt-5 mb-4', data: { disable: true } %>
+<% end %>

@@ -4,7 +4,7 @@ ActiveAdmin.register Member do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :firstname, :lastname, :address, :zip, :city, :email, :annual_fee, :iban, :account_holder, :entry_date, :accept_emails
+  permit_params :firstname, :lastname, :address, :zip, :city, :email, :annual_fee, :iban, :account_holder, :entry_date, :accept_emails, :confirmed
   #
   # or
   #
@@ -20,6 +20,7 @@ ActiveAdmin.register Member do
   end
 
   form do |f|
+    f.object.confirmed = true
     inputs do
       f.input :uid, input_html: { readonly: true, disabled: true }
       f.input :firstname
@@ -33,6 +34,7 @@ ActiveAdmin.register Member do
       f.input :account_holder
       f.input :entry_date, as: :date_select, selected: f.object.entry_date || Date.current, start_year: 2023
       f.input :accept_emails, as: :select, include_blank: false
+      f.input :confirmed, as: :hidden
     end
 
     f.actions
@@ -102,6 +104,10 @@ ActiveAdmin.register Member do
   sidebar :versionate, partial: "layouts/version", only: :show
 
   controller do
+    before_action only: :index do
+      params[:q] = { confirmed_eq: "true"} if params[:commit].blank? && params[:q].blank? && params[:scope].blank?
+    end
+
     def scoped_collection
       super.includes :transactions
     end

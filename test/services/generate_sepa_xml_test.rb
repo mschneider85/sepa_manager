@@ -32,9 +32,11 @@ class GenerateSepaXmlTest < ActiveSupport::TestCase
   end
 
   test "call generates XML with the correct control sum" do
-    sum = @transaction1.amount + @transaction2.amount
-    control_sum = @document.at("PmtInf/CtrlSum").text
+    I18n.with_locale(:en) do
+      sum = @transaction1.amount + @transaction2.amount
+      control_sum = @document.at("PmtInf/CtrlSum").text
 
-    assert_equal number_with_precision(sum, precision: 2), control_sum
+      assert_equal number_with_precision(sum, precision: 2), control_sum
+    end
   end
 end

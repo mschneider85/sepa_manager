@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: email_address_with_name("info@guentherscher-foerderverein.de", "Förderverein Güntherscher Kindergarten e.V.")
   layout "mailer"
 end

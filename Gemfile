@@ -54,6 +54,16 @@ gem "bank-contact"
 gem "money-rails"
 gem "sepa_king"
 
+gem "cssbundling-rails"
+
+gem "bootstrap_form", "~> 5.4"
+
+gem "invisible_captcha"
+
+gem "mjml-rails"
+
+gem "premailer-rails"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows]

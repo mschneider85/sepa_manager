@@ -1,0 +1,77 @@
+<mjml version="3.3.3">
+  <mj-head>
+    <mj-preview>Wilkommen im Förderverein Güntherscher Kindergarten e.V.</mj-preview>
+    <mj-attributes>
+      <mj-class name="bg-light" background-color="#ffffff" />
+      <mj-class name="bg-warn" background-color="#a6dabe" />
+      <mj-class name="content-text" align="left" font-size="14px" padding="0px 25px 0px 25px" />
+      <mj-class name="footer-text" align="left" font-size="12px" padding="0px 25px 0px 25px" />
+      <mj-class name="content-datetime" align="left" font-weight="bold" font-size="10px" padding="0px 25px 0px 25px"/>
+      <mj-text color="#222" line-height="28px" align="center" />
+      <mj-button background-color="#a6dabe" color="#222" padding="20px 0" font-size="18px" inner-padding="20px 50px" text-transform="uppercase" border-radius="6px" font-weight="bold" />
+      <mj-section text-align="center" />
+      <mj-image align="center" />
+      <mj-table color="#222" />
+      <mj-all font-family="Helvetica, Arial, sans-serif" />
+    </mj-attributes>
+    <mj-style inline="inline">
+      a {
+        color: inherit
+      }
+
+      th {
+        text-align: left
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#F2F2F2">
+    <mj-section mj-class="bg-light" padding="20px 0">
+      <mj-column>
+        <mj-image alt="Förderverein Güntherscher Kindergarten e.V." padding="10px 25px" src="<%= image_url('logo.jpg') %>" width="250px"></mj-image>
+      </mj-column>
+    </mj-section>
+
+    <mj-section mj-class="bg-light" padding="20px 0px 20px 0px">
+      <mj-column>
+        <mj-text mj-class="content-text">Hallo
+          <%= @member.firstname %>,</mj-text>
+        <mj-spacer height="14px" />
+        <mj-text mj-class="content-text">
+          vielen Dank für deine Anmeldung. Deinen Mitgliedsantrag haben wir erhalten und freuen uns, dich als neues Mitglied im Förderverein Güntherscher Kindergarten e.V. begrüßen zu dürfen.
+        </mj-text>
+        <mj-spacer height="14px" />
+        <mj-text mj-class="content-text">Klicke hier um deine Mitgliedsschaft zu bestätigen: </mj-text>
+        <mj-spacer height="14px" />
+        <mj-button href="<%= confirm_member_url(@member.generate_token_for(:confirmation)) %>">
+          Bestätigen
+        </mj-button>
+        <mj-spacer height="14px" />
+        <mj-text mj-class="content-text">
+          Nach Bestätigung deiner Mitgliedschaft ziehen wir den Mitgliedsbeitrag in Höhe von <b><%= number_to_currency(@member.annual_fee) %></b> mit Mandatsreferenz <b><%= @member.uid %></b> zur Gläubiger-Identifikationsnummer <b><%= Setting.creditor_identifier %></b> von deinem Konto ein. Ab dem folgenden Jahr wird der Mitgliedsbeitrag automatisch zu Jahresbeginn eingezogen.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+
+    <mj-section mj-class="bg-light" padding="0 0 60px 0">
+      <mj-column>
+        <mj-text mj-class="content-text">
+          Dein Team vom Förderverein Güntherscher Kindergarten e.V.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="bg-warn" padding="20px 0">
+      <mj-column>
+        <mj-text mj-class="footer-text"><b>Kontakt</b></mj-text>
+        <mj-text mj-class="footer-text">Förderverein Güntherscher Kindergarten e.V.</mj-text>
+        <mj-text mj-class="footer-text">Eponastraße 12</mj-text>
+        <mj-text mj-class="footer-text">68526 Ladenburg</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="20px 0px 20px 0px">
+      <mj-column>
+        <mj-text font-size="11px" padding="0px 20px"><a href="https://guentherscher-foerderverein.de/impressum">IMPRESSUM</a></mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

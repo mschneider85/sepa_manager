@@ -11,4 +11,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "home" => "pages#home"
+  get "impressum" => "pages#impressum"
+  get "datenschutz" => "pages#datenschutz"
+  get "danke" => "pages#danke"
+
+  resource :registration, only: %i[show create]
+  resources :members, only: [], param: :token do
+    get :confirm, on: :member
+  end
+
+  root to: "pages#home"
 end

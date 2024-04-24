@@ -1,0 +1,30 @@
+@font-face{
+  font-family: "More Sugar";
+  src: local('More Sugar-Regular'),
+       url('more-sugar/more-sugar.regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Garet";
+  src: local('Garet-Book'),
+       url('garet/Garet-Book.woff2') format('woff2'),
+       url('garet/Garet-Book.woff') format('woff'),
+       url('garet/Garet-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Garet";
+  src: local('Garet-Heavy'),
+       url('garet/Garet-Heavy.woff2') format('woff2'),
+       url('garet/Garet-Heavy.woff') format('woff'),
+       url('garet/Garet-Heavy.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
