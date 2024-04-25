@@ -109,6 +109,7 @@ GEM
       activemodel (>= 6.1)
     brakeman (6.1.2)
       racc
+    browser (5.3.1)
     builder (3.2.4)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
@@ -441,6 +442,7 @@ DEPENDENCIES
   bootsnap
   bootstrap_form (~> 5.4)
   brakeman
+  browser
   bundler-audit
   capybara
   cssbundling-rails
