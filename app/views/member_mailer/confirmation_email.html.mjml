@@ -17,14 +17,20 @@
   <mj-body background-color="#F2F2F2">
     <mj-section mj-class="bg-light" padding="20px 0">
       <mj-column>
-        <mj-image alt="Förderverein Güntherscher Kindergarten e.V." padding="10px 25px" src="<%= image_url('logo.jpg') %>" width="250px"></mj-image>
+        <mj-image alt="Förderverein Güntherscher Kindergarten e.V."
+                  padding="10px 25px"
+                  src="<%= "#{root_url}logo.jpg" %>"
+                  width="250px"
+                  alt="logo">
+        </mj-image>
       </mj-column>
     </mj-section>
 
     <mj-section mj-class="bg-light" padding="20px 0px 20px 0px">
       <mj-column>
-        <mj-text mj-class="content-text">Hallo
-          <%= @member.firstname %>,</mj-text>
+        <mj-text mj-class="content-text">
+          Hallo <%= @member.firstname %>,
+        </mj-text>
         <mj-spacer height="14px" />
         <mj-text mj-class="content-text">
           vielen Dank für deine Anmeldung. Deinen Mitgliedsantrag haben wir erhalten und freuen uns, dich als neues Mitglied im Förderverein Güntherscher Kindergarten e.V. begrüßen zu dürfen.
@@ -60,7 +66,9 @@
     </mj-section>
     <mj-section padding="20px 0px 20px 0px">
       <mj-column>
-        <mj-text font-size="11px" padding="0px 20px"><a href="https://guentherscher-foerderverein.de/impressum" style="color: #222;">IMPRESSUM</a></mj-text>
+        <mj-text font-size="11px" padding="0px 20px">
+          <%= link_to 'IMPRESSUM', impressum_url, style: 'color: #222;' %>
+        </mj-text>
       </mj-column>
     </mj-section>
   </mj-body>

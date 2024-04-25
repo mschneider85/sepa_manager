@@ -109,5 +109,4 @@ Rails.application.configure do
     authentication:       ENV.fetch("SMTP_AUTHENTICATION", "plain"),
     enable_starttls_auto: ENV.fetch("SMTP_ENABLE_STARTTLS_AUTO", "true") == "true"
   }
-  config.action_mailer.asset_host = "https://guentherscher-foerderverein.de/"
 end
