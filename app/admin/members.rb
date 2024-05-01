@@ -4,7 +4,7 @@ ActiveAdmin.register Member do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :firstname, :lastname, :address, :zip, :city, :email, :annual_fee, :iban, :account_holder, :entry_date, :accept_emails, :confirmed
+  permit_params :firstname, :lastname, :address, :zip, :city, :email, :annual_fee, :iban, :account_holder, :entry_date, :accept_emails, :confirmed, :admin_created
   #
   # or
   #
@@ -20,7 +20,8 @@ ActiveAdmin.register Member do
   end
 
   form do |f|
-    f.object.confirmed = true
+    f.object.confirmed = true if f.object.new_record?
+    f.object.admin_created = true if f.object.new_record?
     inputs do
       f.input :uid, input_html: { readonly: true, disabled: true }
       f.input :firstname
@@ -34,7 +35,13 @@ ActiveAdmin.register Member do
       f.input :account_holder
       f.input :entry_date, as: :date_select, selected: f.object.entry_date || Date.current, start_year: 2023
       f.input :accept_emails, as: :select, include_blank: false
-      f.input :confirmed, as: :hidden
+      if f.object.new_record?
+        f.input :confirmed, as: :hidden
+        f.input :admin_created, as: :hidden
+      else
+        f.input :confirmed, as: :select, include_blank: false
+        f.input :admin_created, as: :select, include_blank: false
+      end
     end
 
     f.actions
@@ -67,6 +74,9 @@ ActiveAdmin.register Member do
     column "IBAN", :formatted_iban, sortable: :iban
     column "Existing transactions" do |member|
       member.transactions.exists?
+    end
+    column "Source" do |member|
+      member.admin_created ? "Admin backend" : "Registration form"
     end
     actions
   end
