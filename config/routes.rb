@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "danke" => "pages#danke"
 
   resource :registration, only: %i[show create]
-  resources :members, only: [], param: :token do
+  resource :member, only: [] do
     get :confirm, on: :member
   end
 

@@ -38,7 +38,7 @@
         <mj-spacer height="14px" />
         <mj-text mj-class="content-text">Klicke hier, um deine Mitgliedsschaft zu bestätigen: </mj-text>
         <mj-spacer height="14px" />
-        <mj-button href="<%= confirm_member_url(@member.generate_token_for(:confirmation)) %>">
+        <mj-button href="<%= confirm_member_url(token: @member.generate_token_for(:confirmation)) %>">
           Bestätigen
         </mj-button>
         <mj-spacer height="14px" />

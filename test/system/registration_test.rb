@@ -30,5 +30,34 @@ class RegistrationTest < ApplicationSystemTestCase
     click_button "SENDEN"
 
     assert_text "Dein Mitgliedsantrag wurde übermittelt."
+
+    assert_enqueued_emails 1
+  end
+
+  test "user can confirm registration" do
+    member = members(:one).dup
+    member.save!
+    link = confirm_member_url(token: member.generate_token_for(:confirmation))
+
+    visit link
+
+    assert_text "Deine Anmeldung wurde erfolgreich bestätigt."
+  end
+
+  test "user can't confirm registration twice" do
+    member = members(:one).dup
+    member.save!
+    link = confirm_member_url(token: member.generate_token_for(:confirmation))
+
+    visit link
+    assert_text "Deine Anmeldung wurde erfolgreich bestätigt."
+
+    visit link
+    assert_text "Deine Anmeldung wurde bereits bestätigt."
+  end
+
+  test "user can't confirm registration with invalid token" do
+    visit confirm_member_url(token: "invalid")
+    assert_text "Deine Anmeldung wurde bereits bestätigt."
   end
 end
