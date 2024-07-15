@@ -44,7 +44,7 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem "activeadmin"
+gem "activeadmin", "~> 3.2", ">= 3.2.2"
 gem "devise"
 gem "paper_trail"
 gem "rails-settings-cached"
