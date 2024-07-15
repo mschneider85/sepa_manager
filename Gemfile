@@ -75,7 +75,7 @@ end
 
 group :development do
   # Gives letter_opener an interface for browsing sent emails.
-  gem "letter_opener_web"
+  gem "letter_opener_web", "~> 2.0"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
