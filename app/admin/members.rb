@@ -4,7 +4,7 @@ ActiveAdmin.register Member do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :firstname, :lastname, :address, :zip, :city, :email, :annual_fee, :iban, :account_holder, :entry_date, :accept_emails, :confirmed, :admin_created
+  permit_params :firstname, :lastname, :address, :zip, :city, :email, :annual_fee, :iban, :account_holder, :entry_date, :accept_emails, :confirmed, :admin_created, :status
   #
   # or
   #
@@ -38,9 +38,11 @@ ActiveAdmin.register Member do
       if f.object.new_record?
         f.input :confirmed, as: :hidden
         f.input :admin_created, as: :hidden
+        f.input :status, as: :hidden
       else
         f.input :confirmed, as: :select, include_blank: false
         f.input :admin_created, as: :select, include_blank: false
+        f.input :status, as: :select, include_blank: false
       end
     end
 
@@ -66,24 +68,26 @@ ActiveAdmin.register Member do
     end
   end
 
-  index do
+  index(row_class: ->(record) { record.status_css_klass }) do
     selectable_column
     column :uid
     column :name, sortable: :firstname
-    column :address
+    column :status
     column "IBAN", :formatted_iban, sortable: :iban
     column "Existing transactions" do |member|
-      member.transactions.exists?
+      member.transactions.size
     end
     column "Source" do |member|
       member.admin_created ? "Admin backend" : "Registration form"
     end
+    column :entry_date
     actions
   end
 
   preserve_default_filters!
   remove_filter :versions
   remove_filter :transactions
+  filter :status, as: :select, collection: -> { Member.statuses }
 
   show do
     attributes_table do
@@ -99,6 +103,7 @@ ActiveAdmin.register Member do
       row :account_holder
       row :entry_date
       row :accept_emails
+      row :status
     end
 
     panel "Transactions" do
@@ -115,7 +120,7 @@ ActiveAdmin.register Member do
 
   controller do
     before_action only: :index do
-      params[:q] = { confirmed_eq: "true" } if params[:commit].blank? && params[:q].blank? && params[:scope].blank?
+      params[:q] = { confirmed_eq: "true", active_eq: "true" } if params[:commit].blank? && params[:q].blank? && params[:scope].blank?
     end
 
     def scoped_collection

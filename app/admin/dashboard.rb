@@ -6,7 +6,25 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
   content title: proc { I18n.t("active_admin.dashboard") } do
+    # KPI Panels
+    h3 "Members"
+    columns do
+      grouped_members = Member.confirmed.group(:status).count
+      Member.statuses.each_key do |status|
+        column do
+          panel status.titleize do
+            para grouped_members[status].to_i,
+                 style: "font-size: 3em; text-align: center; margin: 20px 0 8px;"
+            para link_to("View members",
+                         admin_members_path(q: { confirmed_eq: true, status_eq: status })),
+                 style: "text-align: center; font-size: 0.95em; margin: 0;"
+          end
+        end
+      end
+    end
+
     # Setting Panels
+    h3 "Settings"
     editable_fields = Setting.defined_fields
                         .reject { |field| field[:readonly] }
                         .group_by { |field| field[:scope] }
@@ -22,6 +40,7 @@ ActiveAdmin.register_page "Dashboard" do
     end
 
     # PaperTrail Panel
+    h3 "Audit Trail"
     panel "Recently updated content" do
       table_for PaperTrail::Version.order(id: :desc).limit(5) do
         column("Item") do |v|

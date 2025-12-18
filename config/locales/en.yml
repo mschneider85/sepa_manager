@@ -28,6 +28,12 @@
 #       enabled: "ON"
 
 en:
+  date:
+    formats:
+      long: "%Y-%m-%d"
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"
   activeadmin:
     rails_setting_cache:
       menu:

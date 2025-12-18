@@ -7,6 +7,17 @@ class Member < ApplicationRecord
 
   monetize :annual_fee_cents, numericality: { greater_than: 0 }
 
+  enum :status,
+       {
+         active: "active",
+         inactive: "inactive",
+         volunteer: "volunteer"
+       },
+       default: "active",
+       validate: true
+
+  scope :confirmed, -> { where(confirmed: true) }
+
   validates :firstname, :lastname, :address, :zip, :city, :email, presence: true
   validates :iban, iban: true
   validates :entry_date, comparison: { less_than_or_equal_to: -> { Time.zone.today } }
@@ -32,6 +43,13 @@ class Member < ApplicationRecord
 
   def confirm!
     update(confirmed: true)
+  end
+
+  def status_css_klass
+    {
+      "inactive" => "bg-danger",
+      "volunteer" => "bg-info"
+    }[status]
   end
 
   private
