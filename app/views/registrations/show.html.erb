@@ -46,7 +46,7 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <%= f.text_field :iban, label: 'IBAN' %>
+      <%= f.text_field :iban, label: 'IBAN', data: { controller: 'iban', action: 'input->iban#sanitize keydown->iban#handleKeyDown' } %>
     </div>
     <div class="col-md-6">
       <%= f.text_field :account_holder, label: 'Kontoinhaber' %>

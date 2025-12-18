@@ -1,7 +1,8 @@
 class RegistrationForm
   include ActiveModel::Model
 
-  attr_accessor :email, :firstname, :lastname, :address, :zip, :city, :annual_fee, :iban, :account_holder, :terms, :sepa_mandate
+  attr_accessor :email, :firstname, :lastname, :address, :zip, :city, :annual_fee, :account_holder, :terms, :sepa_mandate
+  attr_reader :iban
 
   validates :firstname, :lastname, :address, :zip, :city, :email, presence: true
   validates :iban, iban: true
@@ -11,6 +12,10 @@ class RegistrationForm
 
   def save
     valid? && member.save
+  end
+
+  def iban=(value)
+    @iban = value&.upcase&.gsub(/\s+/, "")
   end
 
   def member
